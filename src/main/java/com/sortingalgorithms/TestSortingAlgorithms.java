@@ -33,6 +33,21 @@ public class TestSortingAlgorithms {
     }
 
     /**
+     * Checks if the given integer array is sorted in descending order.
+     *
+     * @param arr the array of integers to check
+     * @return true if the array is sorted in descending order, otherwise false
+     */
+    private static boolean TestIntArrayDescends(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Reads integers from a file and creates an array of those integers.
      * The file should have one integer per line.
      *
@@ -81,13 +96,11 @@ public class TestSortingAlgorithms {
      *
      * @param alg the sorting algorithm to test, implementing the SortingAlgorithm interface
      * @param arr the array of integers to be sorted and tested
-     * @return true if the sorting algorithm correctly sorts the array in ascending order, otherwise false
      */
-    public static boolean TestAlgorithm(SortingAlgorithm alg, int[] arr) {
-        System.out.println("Testing " + alg);
-        boolean result = TestIntArrayAscends(alg.sorted(arr));
+    public static void TestAlgorithm(SortingAlgorithm alg, int[] arr, boolean ascending) {
+        System.out.print("Testing " + alg + "... ");
+        boolean result = ascending ? TestIntArrayAscends(alg.sorted(arr)) : TestIntArrayDescends(alg.sorted(arr));
         System.out.println(result ? "Passed" : "Failed");
-        return result;
     }
 
     /**
@@ -95,12 +108,10 @@ public class TestSortingAlgorithms {
      * to correctly sort a predefined dataset. This method uses a data file containing integers,
      * applies sorting algorithms to the data, and checks for correctness of the results.
      *
-     * @return true if all tested sorting algorithms pass their respective tests, otherwise false
      */
-    public static boolean TestAlgorithms() {
+    public static void TestAlgorithms() {
         int[] int1000 = CreateIntArrayFromFile("int1000.txt");
-        if (!TestAlgorithm(new InsertionSort(), int1000)) return false;
-        if (!TestAlgorithm(new InsertionSortDescending(), int1000)) return false;
-        return true;
+        TestAlgorithm(new InsertionSort(), int1000, true);
+        TestAlgorithm(new InsertionSortDescending(), int1000, false);
     }
 }
