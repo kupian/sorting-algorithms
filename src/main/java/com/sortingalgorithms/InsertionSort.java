@@ -5,8 +5,8 @@ package com.sortingalgorithms;
  * Insertion sort is a simple sorting algorithm that builds the sorted array one item at a time by
  * comparing and inserting elements into their correct positions.
  */
-public class InsertionSort {
-    public static int[] sorted(int[] arr) {
+public class InsertionSort implements SortingAlgorithm {
+    public int[] sorted(int[] arr) {
         int key;
         for (int j = 1; j < arr.length; j++) {
             key = arr[j];
@@ -18,5 +18,9 @@ public class InsertionSort {
             arr[i+1] = key;
         }
         return arr;
+    }
+
+    public String toString() {
+        return "Insertion Sort in ascending order";
     }
 }

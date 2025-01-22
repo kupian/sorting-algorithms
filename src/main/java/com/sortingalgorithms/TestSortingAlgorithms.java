@@ -76,13 +76,31 @@ public class TestSortingAlgorithms {
     }
 
     /**
-     * Tests the InsertionSort algorithm by sorting an array of integers loaded from a file
-     * and verifying that the resulting array is sorted in ascending order.
+     * Tests whether the specified sorting algorithm correctly sorts the given array
+     * in ascending order by verifying its output.
      *
-     * @return true if the array is correctly sorted in ascending order, otherwise false
+     * @param alg the sorting algorithm to test, implementing the SortingAlgorithm interface
+     * @param arr the array of integers to be sorted and tested
+     * @return true if the sorting algorithm correctly sorts the array in ascending order, otherwise false
      */
-    public static boolean TestInsertionSort() {
+    public static boolean TestAlgorithm(SortingAlgorithm alg, int[] arr) {
+        System.out.println("Testing " + alg);
+        boolean result = TestIntArrayAscends(alg.sorted(arr));
+        System.out.println(result ? "Passed" : "Failed");
+        return result;
+    }
+
+    /**
+     * Tests the functionality of multiple sorting algorithms by verifying their ability
+     * to correctly sort a predefined dataset. This method uses a data file containing integers,
+     * applies sorting algorithms to the data, and checks for correctness of the results.
+     *
+     * @return true if all tested sorting algorithms pass their respective tests, otherwise false
+     */
+    public static boolean TestAlgorithms() {
         int[] int1000 = CreateIntArrayFromFile("int1000.txt");
-        return TestIntArrayAscends(InsertionSort.sorted(int1000));
+        if (!TestAlgorithm(new InsertionSort(), int1000)) return false;
+        if (!TestAlgorithm(new InsertionSortDescending(), int1000)) return false;
+        return true;
     }
 }
