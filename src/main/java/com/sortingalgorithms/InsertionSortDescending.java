@@ -9,7 +9,7 @@ package com.sortingalgorithms;
  * inserting each element into its correct position with respect to a descending order.
  */
 public class InsertionSortDescending implements SortingAlgorithm {
-    public int[] sorted(int[] arr) {
+    public int[] sort(int[] arr) {
         int key;
         for (int j = 1; j < arr.length; j++) {
             key = arr[j];

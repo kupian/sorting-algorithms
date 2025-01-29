@@ -6,5 +6,5 @@ package com.sortingalgorithms;
  * of integers and return the sorted array.
  */
 public interface SortingAlgorithm {
-    int[] sorted(int[] arr);
+    int[] sort(int[] arr);
 }

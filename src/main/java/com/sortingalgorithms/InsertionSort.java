@@ -6,7 +6,7 @@ package com.sortingalgorithms;
  * comparing and inserting elements into their correct positions.
  */
 public class InsertionSort implements SortingAlgorithm {
-    public int[] sorted(int[] arr) {
+    public int[] sort(int[] arr) {
         int key;
         for (int j = 1; j < arr.length; j++) {
             key = arr[j];
