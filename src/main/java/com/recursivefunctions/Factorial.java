@@ -1,4 +1,6 @@
-package recursivefunctions;
+package com.recursivefunctions;
+
+import com.sortingalgorithms.Quicksort;
 
 public class Factorial {
     private static long fact(int n) {
@@ -20,4 +22,5 @@ public class Factorial {
     public static void main(String[] args) {
         System.out.println(factTR(5, 1));
     }
+
 }

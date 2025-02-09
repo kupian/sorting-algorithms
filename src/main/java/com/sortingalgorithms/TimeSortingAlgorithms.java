@@ -14,7 +14,7 @@ public class TimeSortingAlgorithms {
         System.out.println("Time taken to sort int1000.txt:\n");
 
         int[] testArray = CreateArrayFromFile.CreateIntArrayFromFile("int1000.txt");
-        SortingAlgorithm[] algorithmsToTest = {new InsertionSort(), new InsertionSortDescending()};
+        SortingAlgorithm[] algorithmsToTest = {new InsertionSort(), new InsertionSortDescending(), new MergeSort()};
 
         for (SortingAlgorithm algorithm : algorithmsToTest) {
             double runTime = (double) TimeAlgorithm(algorithm, testArray) / 1000000;
