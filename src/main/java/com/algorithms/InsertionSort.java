@@ -1,4 +1,4 @@
-package com.sortingalgorithms;
+package com.algorithms;
 
 /**
  * The InsertionSort class provides a method to perform the insertion sort algorithm on an array of integers.
@@ -6,6 +6,7 @@ package com.sortingalgorithms;
  * comparing and inserting elements into their correct positions.
  */
 public class InsertionSort implements SortingAlgorithm {
+
     public int[] sort(int[] arr) {
         int key;
         for (int j = 1; j < arr.length; j++) {

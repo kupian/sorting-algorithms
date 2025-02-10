@@ -1,4 +1,9 @@
-package com.sortingalgorithms;
+package com.util;
+
+import com.algorithms.InsertionSort;
+import com.algorithms.InsertionSortDescending;
+import com.algorithms.MergeSort;
+import com.algorithms.SortingAlgorithm;
 
 public class TimeSortingAlgorithms {
 

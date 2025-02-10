@@ -1,7 +1,8 @@
-package com.recursivefunctions;
+package com.algorithms;
 
-public class Merge {
-    public static int[] merge(int[] a, int p, int q, int r) {
+public class MergeSort implements SortingAlgorithm {
+
+    private int[] merge(int[] a, int p, int q, int r) {
         int n1 = q - p + 1;
         int n2 = r - q;
 
@@ -33,12 +34,23 @@ public class Merge {
         return a;
     }
 
-    public static void main(String[] args) {
-        int[] a = {1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
-        int[] c = merge(a, 0, 4, a.length - 1);
-        for (int i : c) {
-            System.out.print(i + ", ");
+    private int[] sort(int[] a, int p, int r) {
+        if (p < r) {
+            int q = (p + r) / 2;
+            a = sort(a, p, q);
+            a = sort(a, q + 1, r);
+            a = merge(a, p, q, r);
         }
-        System.out.println();
+        return a;
+    }
+
+    @Override
+    public int[] sort(int[] arr) {
+        return sort(arr, 0, arr.length - 1);
+    }
+
+    @Override
+    public String toString() {
+        return "Merge Sort";
     }
 }

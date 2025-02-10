@@ -1,13 +1,5 @@
-package com.sortingalgorithms;
+package com.algorithms;
 
-/**
- * The InsertionSortDescending class implements the SortingAlgorithm interface
- * to provide functionality for sorting integer arrays in descending order
- * using the insertion sort algorithm.
- *
- * Insertion sort is an algorithm that builds the sorted array one item at a time,
- * inserting each element into its correct position with respect to a descending order.
- */
 public class InsertionSortDescending implements SortingAlgorithm {
     public int[] sort(int[] arr) {
         int key;
