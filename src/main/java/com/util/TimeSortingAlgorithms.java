@@ -1,14 +1,20 @@
 package com.util;
 
-import com.algorithms.InsertionSort;
-import com.algorithms.InsertionSortDescending;
-import com.algorithms.MergeSort;
-import com.algorithms.SortingAlgorithm;
+import com.algorithms.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TimeSortingAlgorithms {
 
     private static final String[] INPUT_FILES = {
-            ""
+            "int10.txt",
+            "int50.txt",
+            "int100.txt",
+            "int1000.txt",
+            "int20k.txt",
+            "int500k.txt",
+            "intBig.txt"
     };
 
     private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] A) {
@@ -20,20 +26,39 @@ public class TimeSortingAlgorithms {
     }
 
     public static void TimeSortingAlgorithms() {
+        SortingAlgorithm[] algorithms = {
+                new InsertionSort(),
+                new MergeSort(),
+                new SelectionSort(),
+                new Quicksort()
+        };
 
+        Map<String, Map<String, Long>> runtimeMap = new HashMap<>();
+
+        for (SortingAlgorithm algorithm : algorithms) {
+            System.out.println("Timing " + algorithm);
+            Map<String, Long> inputRuntime = new HashMap<>();
+
+            for (String f : INPUT_FILES) {
+                System.out.println("with input file: " + f);
+                int[] A = CreateArrayFromFile.CreateIntArrayFromFile(f);
+                long startTime = System.nanoTime();
+                algorithm.sort(A);
+                long endTime = System.nanoTime();
+                inputRuntime.put(f, (endTime - startTime));
+            }
+
+            runtimeMap.put(algorithm.toString(), inputRuntime);
+        }
+
+        CSV.writeToFile("timings.csv", runtimeMap);
     }
 
     public static void main(String[] args) {
-        System.out.println("--------------------------");
-        System.out.println("Time taken to sort int1000.txt:\n");
-
-        int[] testArray = CreateArrayFromFile.CreateIntArrayFromFile("int1000.txt");
-        SortingAlgorithm[] algorithmsToTest = {new InsertionSort(), new InsertionSortDescending(), new MergeSort()};
-
-        for (SortingAlgorithm algorithm : algorithmsToTest) {
-            double runTime = (double) TimeAlgorithm(algorithm, testArray) / 1000000;
-            System.out.println(algorithm + ": " + runTime + "ms");
-        }
-        System.out.println("--------------------------");
+        System.out.println("Timing all algorithms...");
+        long startTime = System.nanoTime();
+        TimeSortingAlgorithms();
+        long endTime = System.nanoTime();
+        System.out.println("Done in: " + (endTime - startTime) + "ns");
     }
 }

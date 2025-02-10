@@ -30,4 +30,9 @@ public class SelectionSort implements SortingAlgorithm {
 
         return sorted;
     }
+
+    @Override
+    public String toString() {
+        return "SelectionSort";
+    }
 }

@@ -22,6 +22,6 @@ public class InsertionSort implements SortingAlgorithm {
     }
 
     public String toString() {
-        return "Insertion Sort in ascending order";
+        return "InsertionSort";
     }
 }

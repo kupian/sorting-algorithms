@@ -51,6 +51,6 @@ public class MergeSort implements SortingAlgorithm {
 
     @Override
     public String toString() {
-        return "Merge Sort";
+        return "MergeSort";
     }
 }

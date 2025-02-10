@@ -16,6 +16,6 @@ public class InsertionSortDescending implements SortingAlgorithm {
     }
 
     public String toString() {
-        return "Insertion Sort in descending order";
+        return "InsertionSortDescending";
     }
 }

@@ -50,4 +50,9 @@ public class Quicksort implements SortingAlgorithm {
         quickSort(B, 0, B.length - 1);
         return B;
     }
+
+    @Override
+    public String toString() {
+        return "Quicksort";
+    }
 }
