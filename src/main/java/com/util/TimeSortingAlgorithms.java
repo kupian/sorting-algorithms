@@ -7,11 +7,20 @@ import com.algorithms.SortingAlgorithm;
 
 public class TimeSortingAlgorithms {
 
-    private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] array) {
+    private static final String[] INPUT_FILES = {
+            ""
+    };
+
+    private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] A) {
         long startTime = System.nanoTime();
-        algorithm.sort(array);
+        algorithm.sort(A);
         long endTime = System.nanoTime();
+
         return endTime - startTime;
+    }
+
+    public static void TimeSortingAlgorithms() {
+
     }
 
     public static void main(String[] args) {

@@ -42,7 +42,10 @@ public class Quicksort implements SortingAlgorithm {
     @Override
     public int[] sort(int[] A) {
         int[] B = new int[A.length];
-        System.arraycopy(A, 0, B, 0, A.length);
+
+        for (int i = 0; i < A.length; i++) {
+            B[i] = A[i];
+        }
 
         quickSort(B, 0, B.length - 1);
         return B;

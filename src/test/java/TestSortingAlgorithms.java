@@ -53,7 +53,8 @@ public class TestSortingAlgorithms {
 
     @Test
     public void TestSelectionSort() {
-        fail();
+        SortingAlgorithm alg = new SelectionSort();
+        assertTrue(TestAlgorithm(alg, testArray));
     }
 
     @Test
