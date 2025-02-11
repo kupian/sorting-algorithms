@@ -1,10 +1,5 @@
 package com.algorithms;
 
-/**
- * The InsertionSort class provides a method to perform the insertion sort algorithm on an array of integers.
- * Insertion sort is a simple sorting algorithm that builds the sorted array one item at a time by
- * comparing and inserting elements into their correct positions.
- */
 public class InsertionSort implements SortingAlgorithm {
 
     public int[] sort(int[] arr) {

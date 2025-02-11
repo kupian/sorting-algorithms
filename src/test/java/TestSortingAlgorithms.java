@@ -63,4 +63,10 @@ public class TestSortingAlgorithms {
         assertTrue(TestAlgorithm(alg, testArray));
     }
 
+    @Test
+    public void TestShellSort() {
+        SortingAlgorithm alg = new Shellsort();
+        assertTrue(TestAlgorithm(alg, testArray));
+    }
+
 }

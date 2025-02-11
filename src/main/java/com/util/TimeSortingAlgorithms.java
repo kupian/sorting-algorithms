@@ -28,6 +28,7 @@ public class TimeSortingAlgorithms {
     public static void TimeSortingAlgorithms() {
         SortingAlgorithm[] algorithms = {
                 new InsertionSort(),
+                new Shellsort(),
                 new MergeSort(),
                 new SelectionSort(),
                 new Quicksort()
@@ -56,9 +57,30 @@ public class TimeSortingAlgorithms {
 
     public static void main(String[] args) {
         System.out.println("Timing all algorithms...");
+        long timerStart = System.currentTimeMillis();
+
+        Runnable timingThread = () -> {
+            while (true) {
+                long elapsedTime = System.currentTimeMillis() - timerStart;
+                System.out.println("Elapsed time: " + elapsedTime / 1000 + " s");
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                    break;
+                }
+            }
+        };
+
+        Thread run = new Thread(timingThread);
+        run.setDaemon(true);
+        run.start();
+
         long startTime = System.nanoTime();
         TimeSortingAlgorithms();
         long endTime = System.nanoTime();
+
         System.out.println("Done in: " + (endTime - startTime) + "ns");
     }
 }
