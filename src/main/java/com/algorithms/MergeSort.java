@@ -2,7 +2,7 @@ package com.algorithms;
 
 public class MergeSort implements SortingAlgorithm {
 
-    private int[] merge(int[] a, int p, int q, int r) {
+    public static void merge(int[] a, int p, int q, int r) {
         int n1 = q - p + 1;
         int n2 = r - q;
 
@@ -30,23 +30,21 @@ public class MergeSort implements SortingAlgorithm {
                 j++;
             }
         }
-
-        return a;
     }
 
-    private int[] sort(int[] a, int p, int r) {
+    private void sort(int[] a, int p, int r) {
         if (p < r) {
             int q = (p + r) / 2;
-            a = sort(a, p, q);
-            a = sort(a, q + 1, r);
-            a = merge(a, p, q, r);
+            sort(a, p, q);
+            sort(a, q + 1, r);
+            merge(a, p, q, r);
         }
-        return a;
     }
 
     @Override
     public int[] sort(int[] arr) {
-        return sort(arr, 0, arr.length - 1);
+        sort(arr, 0, arr.length - 1);
+        return arr;
     }
 
     @Override

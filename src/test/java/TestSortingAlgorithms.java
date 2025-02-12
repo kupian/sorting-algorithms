@@ -52,6 +52,22 @@ public class TestSortingAlgorithms {
     }
 
     @Test
+    public void TestHybridMergeSort() {
+        SortingAlgorithm alg = new HybridMergeSort();
+        assertTrue(TestAlgorithm(alg, testArray));
+    }
+
+    @Test
+    public void TestIterativeMergeSort() {
+        SortingAlgorithm alg = new IterativeMergeSort();
+        alg.sort(testArray);
+        for (int i = 0; i < testArray.length; i++) {
+            System.out.print(testArray[i] + " ");
+        }
+        assertTrue(TestAlgorithm(alg, testArray));
+    }
+
+    @Test
     public void TestSelectionSort() {
         SortingAlgorithm alg = new SelectionSort();
         assertTrue(TestAlgorithm(alg, testArray));

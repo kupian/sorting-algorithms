@@ -21,4 +21,9 @@ public class Shellsort implements SortingAlgorithm {
         }
         return A;
     }
+
+    @Override
+    public String toString() {
+        return "Shellsort";
+    }
 }
