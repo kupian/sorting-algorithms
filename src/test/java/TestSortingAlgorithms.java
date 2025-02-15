@@ -88,6 +88,12 @@ public class TestSortingAlgorithms {
     }
 
     @Test
+    public void TestHybridQuicksort() {
+        SortingAlgorithm alg = new HybridQuicksort();
+        assertTrue(TestAlgorithm(alg, testArray));
+    }
+
+    @Test
     public void TestShellSort() {
         SortingAlgorithm alg = new Shellsort();
         assertTrue(TestAlgorithm(alg, testArray));

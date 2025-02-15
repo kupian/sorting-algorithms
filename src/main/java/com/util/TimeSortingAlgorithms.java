@@ -13,8 +13,8 @@ public class TimeSortingAlgorithms {
             "int100.txt",
             "int1000.txt",
             "int20k.txt",
-            //"int500k.txt",
-            //"intBig.txt"
+            "int500k.txt",
+            "intBig.txt"
     };
 
     private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] A) {
@@ -35,7 +35,8 @@ public class TimeSortingAlgorithms {
                 new SelectionSort(),
                 new Quicksort(),
                 new MedianOfThreeQuicksort(),
-                new DutchFlagQuicksort()
+                new DutchFlagQuicksort(),
+                new HybridQuicksort()
         };
 
         Map<String, Map<String, Long>> runtimeMap = new HashMap<>();

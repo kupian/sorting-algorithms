@@ -2,7 +2,7 @@ package com.algorithms;
 
 public class DutchFlagQuicksort extends Quicksort {
 
-    protected void partition(int[] A, int left, int right, int[] ij) {
+    private void partition(int[] A, int left, int right, int[] ij) {
         if (right - left <= 1) {
             if (A[right] < A[left]) {
                 int temp = A[left];
@@ -38,6 +38,7 @@ public class DutchFlagQuicksort extends Quicksort {
         ij[1] = mid;
     }
 
+    @Override
     public void quickSort(int[] A, int left, int right) {
         if (left >= right) {
             return;
