@@ -1,11 +1,9 @@
 package com.algorithms;
 
-import java.util.Random;
-
 public class Quicksort implements SortingAlgorithm {
 
-    protected int getPivot(int[] arr, int start, int end) {
-        return arr[end];
+    protected int getPivot(int[] A, int start, int end) {
+        return A[end];
     }
 
     protected int partition(int[] A, int start, int end) {

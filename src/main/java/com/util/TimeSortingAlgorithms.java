@@ -33,7 +33,9 @@ public class TimeSortingAlgorithms {
                 new HybridMergeSort(),
                 new IterativeMergeSort(),
                 new SelectionSort(),
-                new Quicksort()
+                new Quicksort(),
+                new MedianOfThreeQuicksort(),
+                new DutchFlagQuicksort()
         };
 
         Map<String, Map<String, Long>> runtimeMap = new HashMap<>();

@@ -81,6 +81,11 @@ public class TestSortingAlgorithms {
         assertTrue(TestAlgorithm(alg, testArray));
     }
 
+    @Test
+    public void TestDutchFlagQuicksort() {
+        SortingAlgorithm alg = new DutchFlagQuicksort();
+        assertTrue(TestAlgorithm(alg, testArray));
+    }
 
     @Test
     public void TestShellSort() {

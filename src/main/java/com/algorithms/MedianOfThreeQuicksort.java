@@ -9,19 +9,19 @@ public class MedianOfThreeQuicksort extends Quicksort {
     }
 
     @Override
-    protected int getPivot(int[] arr, int start, int end) {
+    protected int getPivot(int[] A, int start, int end) {
         int mid = (start + end) / 2;
 
-        if (arr[mid] < arr[start]) {
-            swap(arr, start, mid);
+        if (A[mid] < A[start]) {
+            swap(A, start, mid);
         }
-        if (arr[end] < arr[start]) {
-            swap(arr, end, start);
+        if (A[end] < A[start]) {
+            swap(A, end, start);
         }
-        if (arr[mid] < arr[end]) {
-            swap(arr, mid, end);
+        if (A[mid] < A[end]) {
+            swap(A, mid, end);
         }
-        return arr[end];
+        return A[end];
     }
 
     @Override
