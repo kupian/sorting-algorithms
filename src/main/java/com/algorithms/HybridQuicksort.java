@@ -1,6 +1,7 @@
 package com.algorithms;
 
 public class HybridQuicksort extends Quicksort {
+
     @Override
     public void quickSort(int[] A, int left, int right) {
         SortingAlgorithm insertion = new InsertionSort();
@@ -22,5 +23,10 @@ public class HybridQuicksort extends Quicksort {
                 }
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "HybridQuicksort";
     }
 }

@@ -8,13 +8,7 @@ import java.util.Map;
 public class TimeSortingAlgorithms {
 
     private static final String[] INPUT_FILES = {
-            "int10.txt",
-            "int50.txt",
-            "int100.txt",
-            "int1000.txt",
-            "int20k.txt",
-            "int500k.txt",
-            "intBig.txt"
+            "dutch.txt"
     };
 
     private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] A) {
@@ -28,15 +22,6 @@ public class TimeSortingAlgorithms {
     public static void TimeSortingAlgorithms(int iterations) {
         SortingAlgorithm[] algorithms = {
                 new InsertionSort(),
-                new Shellsort(),
-                new MergeSort(),
-                new HybridMergeSort(),
-                new IterativeMergeSort(),
-                new SelectionSort(),
-                new Quicksort(),
-                new MedianOfThreeQuicksort(),
-                new DutchFlagQuicksort(),
-                new HybridQuicksort()
         };
 
         Map<String, Map<String, Long>> runtimeMap = new HashMap<>();
@@ -52,6 +37,7 @@ public class TimeSortingAlgorithms {
 
                 for (int i = 0; i < iterations; i++) {
                     int[] A = CreateArrayFromFile.CreateIntArrayFromFile(f);
+                    System.out.println("iteration " + i);
 
                     long startTime = System.currentTimeMillis();
 
@@ -59,7 +45,7 @@ public class TimeSortingAlgorithms {
 
                     long endTime = System.currentTimeMillis();
 
-                    runningTotal += endTime - startTime;
+                    runningTotal += (endTime - startTime);
                 }
 
                 inputRuntime.put(algorithm.toString(), runningTotal / iterations);

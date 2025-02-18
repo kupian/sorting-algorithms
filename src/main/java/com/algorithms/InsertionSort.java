@@ -1,5 +1,7 @@
 package com.algorithms;
 
+import com.util.CreateArrayFromFile;
+
 public class InsertionSort implements SortingAlgorithm {
 
     public int[] sort(int[] arr) {
