@@ -8,7 +8,7 @@ import java.util.Map;
 public class TimeSortingAlgorithms {
 
     private static final String[] INPUT_FILES = {
-            "dutch.txt"
+            "int500k.txt"
     };
 
     private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] A) {
@@ -21,7 +21,7 @@ public class TimeSortingAlgorithms {
 
     public static void TimeSortingAlgorithms(int iterations) {
         SortingAlgorithm[] algorithms = {
-                new InsertionSort(),
+                new SelectionSort(),
         };
 
         Map<String, Map<String, Long>> runtimeMap = new HashMap<>();
