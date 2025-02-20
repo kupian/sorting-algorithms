@@ -7,10 +7,6 @@ import java.util.Map;
 
 public class TimeSortingAlgorithms {
 
-    private static final String[] INPUT_FILES = {
-            "int500k.txt"
-    };
-
     private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] A) {
         long startTime = System.nanoTime();
         algorithm.sort(A);
@@ -19,14 +15,11 @@ public class TimeSortingAlgorithms {
         return endTime - startTime;
     }
 
-    public static void TimeSortingAlgorithms(int iterations) {
-        SortingAlgorithm[] algorithms = {
-                new SelectionSort(),
-        };
+    public static Map<String, Map<String, Long>> TimeSortingAlgorithms(String[] inputFiles, SortingAlgorithm[] algorithms, int iterations) {
 
         Map<String, Map<String, Long>> runtimeMap = new HashMap<>();
 
-        for (String f : INPUT_FILES) {
+        for (String f : inputFiles) {
             System.out.println("Sorting " + f);
             Map<String, Long> inputRuntime = new HashMap<>();
 
@@ -53,11 +46,15 @@ public class TimeSortingAlgorithms {
 
             runtimeMap.put(f, inputRuntime);
         }
-
-        CSV.writeToFile("timings.csv", runtimeMap, algorithms);
+        return runtimeMap;
     }
 
     public static void main(String[] args) {
+        String[] files = {"intBig.txt"};
+        SortingAlgorithm[] algorithms = {
+                new SelectionSort(),
+        };
+
         System.out.println("Timing all algorithms...");
         long timerStart = System.currentTimeMillis();
 
@@ -80,8 +77,9 @@ public class TimeSortingAlgorithms {
         run.start();
 
         long startTime = System.nanoTime();
-        TimeSortingAlgorithms(10);
+        Map<String, Map<String, Long>> runtimeMap = TimeSortingAlgorithms(files, algorithms, 10);
         long endTime = System.nanoTime();
+        CSV.writeToFile("timings.csv", runtimeMap, algorithms);
 
         System.out.println("Done in: " + (endTime - startTime) + "ns");
     }

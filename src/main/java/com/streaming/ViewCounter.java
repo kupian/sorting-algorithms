@@ -2,26 +2,31 @@ package com.streaming;
 
 import java.util.Arrays;
 
-import com.algorithms.Quicksort;
+import com.util.CreateArrayFromFile;
 
 public class ViewCounter {
 
     public int[] getTopViews(int k, int[] views) {
-        Quicksort quicksort = new Quicksort();
-        int[] topViews = new int[k];
+        MinHeap heap = new MinHeap(k);
         for (int x : views) {
-            if (x > topViews[0]) {
-                topViews[0] = x;
-                quicksort.sort(topViews);
+            if (heap.getHeapSize() < heap.getMaxSize()) {
+                heap.insert(x);
+            } else if (heap.getMin() < x) {
+                heap.popMin();
+                heap.insert(x);
             }
         }
-        return topViews;
+        return heap.getHeap();
     }
 
     public static void main(String[] args) {
         ViewCounter viewCounter = new ViewCounter();
-        int[] views = {12, 43, 22, 56, 78, 1, 2, 3, 4, 5, 6, 99, 134, 65};
-        int[] topViews = viewCounter.getTopViews(3, views);
+        int k = 100;
+        int[] views = CreateArrayFromFile.CreateIntArrayFromFile("intBig.txt");
+        long startTime = System.currentTimeMillis();
+        int[] topViews = viewCounter.getTopViews(k, views);
+        long endTime = System.currentTimeMillis();
         System.out.println("Top views: " + Arrays.toString(topViews));
+        System.out.println("Runtime: " + (endTime - startTime));
     }
 }
