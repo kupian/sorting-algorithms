@@ -7,15 +7,14 @@ import java.util.Map;
 
 public class TimeSortingAlgorithms {
 
-    private static long TimeAlgorithm(SortingAlgorithm algorithm, int[] A) {
+    private static long timeAlgorithm(SortingAlgorithm algorithm, int[] A) {
         long startTime = System.nanoTime();
         algorithm.sort(A);
         long endTime = System.nanoTime();
-
         return endTime - startTime;
     }
 
-    public static Map<String, Map<String, Long>> TimeSortingAlgorithms(String[] inputFiles, SortingAlgorithm[] algorithms, int iterations) {
+    public static Map<String, Map<String, Long>> runSortingAlgorithms(String[] inputFiles, SortingAlgorithm[] algorithms, int iterations) {
 
         Map<String, Map<String, Long>> runtimeMap = new HashMap<>();
 
@@ -30,15 +29,7 @@ public class TimeSortingAlgorithms {
 
                 for (int i = 0; i < iterations; i++) {
                     int[] A = CreateArrayFromFile.CreateIntArrayFromFile(f);
-                    System.out.println("iteration " + i);
-
-                    long startTime = System.currentTimeMillis();
-
-                    algorithm.sort(A);
-
-                    long endTime = System.currentTimeMillis();
-
-                    runningTotal += (endTime - startTime);
+                    runningTotal += (timeAlgorithm(algorithm, A));
                 }
 
                 inputRuntime.put(algorithm.toString(), runningTotal / iterations);
@@ -49,13 +40,7 @@ public class TimeSortingAlgorithms {
         return runtimeMap;
     }
 
-    public static void main(String[] args) {
-        String[] files = {"intBig.txt"};
-        SortingAlgorithm[] algorithms = {
-                new SelectionSort(),
-        };
-
-        System.out.println("Timing all algorithms...");
+    private static void startProgramTimer() {
         long timerStart = System.currentTimeMillis();
 
         Runnable timingThread = () -> {
@@ -75,9 +60,20 @@ public class TimeSortingAlgorithms {
         Thread run = new Thread(timingThread);
         run.setDaemon(true);
         run.start();
+    }
+
+    public static void main(String[] args) {
+        String[] files = {"intBig.txt"};
+        SortingAlgorithm[] algorithms = {
+                new SelectionSort(),
+        };
+
+        System.out.println("Timing all algorithms...");
+
+        startProgramTimer();
 
         long startTime = System.nanoTime();
-        Map<String, Map<String, Long>> runtimeMap = TimeSortingAlgorithms(files, algorithms, 10);
+        Map<String, Map<String, Long>> runtimeMap = runSortingAlgorithms(files, algorithms, 10);
         long endTime = System.nanoTime();
         CSV.writeToFile("timings.csv", runtimeMap, algorithms);
 

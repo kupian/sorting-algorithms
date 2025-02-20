@@ -11,6 +11,7 @@ public class MinHeap {
         heapSize = 0;
     }
 
+    // Correct ordering to preserve min-heap properties
     void minHeapify(int i) {
         int left = leftChild(i);
         int right = rightChild(i);
@@ -29,6 +30,7 @@ public class MinHeap {
         }
     }
 
+    // Remove the minimum element (root) and return it
     int popMin() {
         if (heapSize <= 0) {
             return -1;
@@ -47,10 +49,12 @@ public class MinHeap {
         return root;
     }
 
+    // Return the root without removing it
     int getMin() {
         return arr[0];
     }
 
+    // Insert an element and correct ordering
     void insert(int x) {
         if (heapSize == maxSize) {
             System.out.println("Could not insertKey");

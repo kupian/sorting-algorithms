@@ -29,8 +29,8 @@ public class CreateArrayFromFile {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("Error reading file");
-            e.printStackTrace();
+            System.out.println("Error reading file. Check spelling and try again.");
+            return new int[0];
         }
 
         int[] arr = new int[list.size()];
